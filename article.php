@@ -30,7 +30,7 @@
 	<main class="main">
 		<section class="article-section">
 			<div class="container-md">
-				<img src="img/articles/article-banner.jpg" alt="article banner" class="article__img">
+				<img src="assets/img/articles/article-banner.jpg" alt="article banner" class="article__img">
 			</div>
 			<div class="container-sm">
 				<article class="article">
