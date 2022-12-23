@@ -1,3 +1,5 @@
+<?php include('path.php'); ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,24 +11,7 @@
 </head>
 
 <body>
-	<header class="header">
-		<div class="container-md">
-			<p class="header__logo">My blog</p>
-			<nav class="header__menu menu">
-				<ul class="menu__list">
-					<li><a href="/" class="menu__link">Главная</a></li>
-					<li><a href="/articles" class="menu__link">Статьи</a></li>
-					<li><a href="/contacts" class="menu__link">Контакты</a></li>
-					<!-- <li><a href="" class="menu-header__link">Личный кабинет</a>
-				<ul>
-					<li><a href="" class="menu-header__link">Админ панель</a></li>
-					<li><a href="" class="menu-header__link">Выйти</a></li>
-				</ul>
-				</li> -->
-				</ul>
-			</nav>
-		</div>
-	</header>
+	<?php include("app/include/header.php"); ?>
 	<main class="main">
 		<section class="article-section">
 			<div class="container-md">
@@ -93,21 +78,7 @@
 			</div>
 		</section>
 	</main>
-	<footer class="footer">
-		<div class="container-md">
-			<nav class="footer__menu menu">
-				<ul class="menu__list">
-					<li><a href="/" class="menu__link">Главная</a></li>
-					<li><a href="/articles" class="menu__link">Статьи</a></li>
-					<li><a href="/contacts" class="menu__link">Контакты</a></li>
-				</ul>
-			</nav>
-			<div class="footer__info">
-				<p class="footer__author">Смирнова Дарья &mdash; frontend разработчик</p>
-				<time class="footer__year">2022</time>
-			</div>
-		</div>
-	</footer>
+	<?php include("app/include/footer.php"); ?>
 </body>
 
 </html>
