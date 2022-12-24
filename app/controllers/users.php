@@ -1,20 +1,45 @@
 <?php
 include('app/database/db.php');
 
-if (isset($_POST['login'])) {
-	$login = $_POST['login'];
-	$email = $_POST['email'];
-	$pass = password_hash($_POST['password-repeat'], PASSWORD_DEFAULT);
+$errMsg = '';
+$regStatus = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$admin = 0;
+	$login = trim($_POST['login']);
+	$email = trim($_POST['email']);
+	$passFirst = trim($_POST['password']);
+	$passSecond = trim($_POST['password-repeat']);
 
-	$post = [
-		'admin' => $admin,
-		'username' => $login,
-		'email' => $email,
-		'password' => $pass,
-	];
+	if ($login === '' || $email === '' || $passFirst === '' || $passSecond === '') {
+		$errMsg = 'Не все поля заполнены!';
+	} elseif (mb_strlen($login, 'UTF8') < 3) {
+		$errMsg = 'Логин должен состоять более, чем из двух символов';
+	} elseif ($passFirst !== $passSecond) {
+		$errMsg = 'Пароли не совпадают';
+	} else {
+		$existence = selectOne('users', ['email' => $email]);
 
-	$id = insert('users', $post);
-	$lastRow = selectOne('users', ['id' => $id]);
+		if ($existence && $existence['email'] === $email) {
+			$errMsg = 'Пользователь с таким email адресом уже существует';
+		} else {
+			$pass = password_hash($passFirst, PASSWORD_DEFAULT);
+			$post = [
+				'admin' => $admin,
+				'username' => $login,
+				'email' => $email,
+				'password' => $pass,
+			];
 
+			$id = insert('users', $post);
+			$errMsg = "Пользователь <strong>$login</strong> успешно зарегистрирован!";
+
+			// $lastRow = selectOne('users', ['id' => $id]);
+		}
+
+	}
+
+} else {
+	$login = '';
+	$email = '';
 }

@@ -19,13 +19,14 @@ include('app/controllers/users.php');
 		<section class="registration">
 			<h1 class="registration__title">Форма регистрации</h1>
 			<form action="registration.php" method="post" class="registration__form">
+				<p style="color: darkred;"><?= $errMsg ?></p>
 				<div class="form-control">
 					<label for="login">Логин</label>
-					<input type="text" name="login" id="login" placeholder="введите логин">
+					<input type="text" name="login" id="login" placeholder="введите логин" value="<?= $login ?>">
 				</div>
 				<div class="form-control">
 					<label for="email">Email</label>
-					<input type="email" name="email" id="email" placeholder="введите email">
+					<input type="email" name="email" id="email" placeholder="введите email" value="<?= $email ?>">
 				</div>
 				<div class="form-control">
 					<label for="password">Пароль</label>
