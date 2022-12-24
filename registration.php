@@ -1,4 +1,7 @@
-<?php include('path.php'); ?>
+<?php
+include('path.php');
+include('app/controllers/users.php');
+?>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -15,7 +18,7 @@
 	<main class="main">
 		<section class="registration">
 			<h1 class="registration__title">Форма регистрации</h1>
-			<form action="registration.html" method="post" class="registration__form">
+			<form action="registration.php" method="post" class="registration__form">
 				<div class="form-control">
 					<label for="login">Логин</label>
 					<input type="text" name="login" id="login" placeholder="введите логин">
@@ -33,8 +36,8 @@
 					<input type="password" name="password-repeat" id="password-repeat" placeholder="повторите пароль">
 				</div>
 				<div class="form-control">
-					<button type="submit" class="form__btn">Зарегистрироваться</button>
-					<a href="auth.html">Войти</a>
+					<button type="submit" name="btn-reg" class="form__btn">Зарегистрироваться</button>
+					<a href="auth.php">Войти</a>
 				</div>
 			</form>
 		</section>
