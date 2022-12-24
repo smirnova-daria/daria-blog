@@ -75,9 +75,43 @@ function selectOne($table, $params = [])
 	return $query->fetch();
 }
 
-$params = [
-	'admin' => 0,
-	'username' => 'user Ben'
+// $params = [
+// 	'admin' => 0,
+// 	'username' => 'user Ben'
+// ];
+// // prePrint(selectAll('users', $params));
+// prePrint(selectOne('users'));
+
+function insert($table, $params)
+{
+	global $pdo;
+
+	$i = 0;
+	$col = '';
+	$mask = '';
+	foreach ($params as $key => $value) {
+		if ($i === 0) {
+			$col .= "$key";
+			$mask .= "'" . "$value" . "'";
+		} else {
+			$col .= ", $key";
+			$mask .= ", '" . "$value" . "'";
+		}
+		$i++;
+	}
+
+	$sql = "INSERT INTO $table ($col) VALUES ($mask)";
+
+	$query = $pdo->prepare($sql);
+	$query->execute();
+
+	dbCheckError($query);
+}
+$arrData = [
+	'admin' => '0',
+	'username' => 'Tom',
+	'email' => 'tom@test.com',
+	'password' => '12345'
 ];
-// prePrint(selectAll('users', $params));
-prePrint(selectOne('users'));
+
+insert('users', $arrData);
