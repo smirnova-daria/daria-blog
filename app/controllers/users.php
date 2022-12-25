@@ -1,10 +1,22 @@
 <?php
 include('app/database/db.php');
 
+function setSession($params)
+{
+	$_SESSION['id'] = $params['id'];
+	$_SESSION['login'] = $params['username'];
+	$_SESSION['admin'] = $params['admin'];
+	if ($_SESSION['admin']) {
+		header("Location: " . BASE_URL . 'admin/admin.php');
+	} else {
+		header("Location: " . BASE_URL);
+	}
+}
+
 $errMsg = '';
 $regStatus = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn-reg'])) {
 	$admin = 0;
 	$login = trim($_POST['login']);
 	$email = trim($_POST['email']);
@@ -33,14 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			$id = insert('users', $post);
 			$user = selectOne('users', ['id' => $id]);
-			$_SESSION['id'] = $user['id'];
-			$_SESSION['login'] = $user['username'];
-			$_SESSION['admin'] = $user['admin'];
-			if ($_SESSION['admin']) {
-				header("Location: " . BASE_URL . 'admin/admin.php');
-			} else {
-				header("Location: " . BASE_URL);
-			}
+			setSession($user);
 
 		}
 
@@ -48,5 +53,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 } else {
 	$login = '';
+	$email = '';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn-log'])) {
+	$email = trim($_POST['email']);
+	$pass = trim($_POST['password']);
+
+	if ($email === '' || $pass === '') {
+		$errMsg = 'Не все поля заполнены!';
+	} else {
+		$existence = selectOne('users', ['email' => $email]);
+
+		if ($existence && password_verify($pass, $existence['password'])) {
+			setSession($existence);
+		} else {
+			$errMsg = 'Неверный email или пароль';
+		}
+	}
+} else {
 	$email = '';
 }

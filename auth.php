@@ -1,4 +1,7 @@
-<?php include('path.php'); ?>
+<?php
+include 'path.php';
+include 'app/controllers/users.php';
+?>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -15,18 +18,19 @@
 	<main class="main">
 		<section class="registration">
 			<h1 class="registration__title">Войти в личный кабинет</h1>
-			<form action="auth.html" method="post" class="registration__form">
+			<form action="auth.php" method="post" class="registration__form">
+				<p style="color: darkred;"><?= $errMsg ?></p>
 				<div class="form-control">
-					<label for="login">Логин</label>
-					<input type="text" name="login" id="login" placeholder="введите логин">
+					<label for="email">Email (при регистрации)</label>
+					<input type="email" name="email" id="email" placeholder="введите email" value="<?= $email ?>">
 				</div>
 				<div class="form-control">
 					<label for="password">Пароль</label>
 					<input type="password" name="password" id="password" placeholder="введите пароль">
 				</div>
 				<div class="form-control">
-					<button type="submit" class="form__btn">Войти</button>
-					<a href="registration.html">Зарегистрироваться</a>
+					<button type="submit" class="form__btn" name="btn-log">Войти</button>
+					<a href="registration.php">Зарегистрироваться</a>
 				</div>
 			</form>
 		</section>
