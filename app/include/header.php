@@ -13,7 +13,7 @@
 						<?php if ($_SESSION['admin']): ?>
 						<li><a href="<?php echo BASE_URL . 'registration.php' ?>" class="menu-header__link">Админ панель</a></li>
 						<?php endif; ?>
-						<li><a href="" class="menu-header__link">Выйти</a></li>
+						<li><a href="<?= BASE_URL . 'logout.php' ?>" class="menu-header__link">Выйти</a></li>
 					</ul>
 					<?php else: ?>
 					<a href="<?= BASE_URL . 'auth.php' ?>" class="menu-header__link">Войти</a>
