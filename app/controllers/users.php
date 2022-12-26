@@ -7,7 +7,7 @@ function setSession($params)
 	$_SESSION['login'] = $params['username'];
 	$_SESSION['admin'] = $params['admin'];
 	if ($_SESSION['admin']) {
-		header("Location: " . BASE_URL . 'admin/admin.php');
+		header("Location: " . BASE_URL . 'admin/posts/index.php');
 	} else {
 		header("Location: " . BASE_URL);
 	}
