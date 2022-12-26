@@ -1,8 +1,3 @@
-<?php
-include '../../path.php';
-include '../../app/database/db.php';
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -24,13 +19,7 @@ include '../../app/database/db.php';
 
 
 	<main class="main">
-		<aside class="sidebar">
-			<ul>
-				<li><a href="">Записи</a></li>
-				<li><a href="">Пользователи</a></li>
-				<li><a href="">Категории</a></li>
-			</ul>
-		</aside>
+		<?php include '../../app/include/sidebar-admin.php'; ?>
 
 		<section class="posts">
 			<div class="posts__controlls">

@@ -1,7 +1,4 @@
-<?php
-include '../../path.php';
-include '../../app/database/db.php';
-?>
+
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -24,13 +21,7 @@ include '../../app/database/db.php';
 
 
 	<main class="main">
-		<aside class="sidebar">
-			<ul>
-				<li><a href="">Записи</a></li>
-				<li><a href="">Пользователи</a></li>
-				<li><a href="">Категории</a></li>
-			</ul>
-		</aside>
+		<?php include '../../app/include/sidebar-admin.php'; ?>
 
 		<section class="posts">
 			<div class="posts__controlls">
@@ -40,7 +31,7 @@ include '../../app/database/db.php';
 
 			<h1>Добавление пользователя</h1>
 
-			<div class="post__create">
+			<iv class="post__create">
 				<form action="create.php" method="post">
 					<div class="form-control">
 						<label for="login">Логин</label>
@@ -64,7 +55,7 @@ include '../../app/database/db.php';
 					</select>
 					<button type="submit">Создать</button>
 				</form>
-			</div>
+				</div>
 		</section>
 	</main>
 

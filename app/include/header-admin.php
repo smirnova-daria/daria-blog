@@ -1,3 +1,8 @@
+<?php
+session_start();
+include '../../path.php';
+?>
+
 <header class="header">
 	<div class="container-md">
 		<p class="header__logo">My blog</p>
