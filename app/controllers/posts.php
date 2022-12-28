@@ -3,6 +3,8 @@ include '../../path.php';
 include '../../app/database/db.php';
 
 $topics = selectAll('topics');
+$posts = selectAll('posts');
+$postsAdm = selectAllFromPostsWithUsers('posts', 'users');
 
 $id = '';
 $title = '';
@@ -14,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])) {
 	$title = trim($_POST['post-title']);
 	$text = trim($_POST['post-text']);
 	$topic = $_POST['post-topics'];
+	$publish = isset($_POST['publish']) ? 1 : 0;
+
 
 	if ($title === '' || $text === '' || $topic === '') {
 		$errMsg = 'Не все поля заполнены!';
@@ -26,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])) {
 			'title' => $title,
 			'img' => $_POST['post-image'],
 			'content' => $text,
-			'status' => 1,
+			'status' => $publish,
 			'id_topic' => $topic
 		];
 

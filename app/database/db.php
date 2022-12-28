@@ -137,3 +137,15 @@ function delete($table, $id)
 
 	dbCheckError($query);
 }
+
+function selectAllFromPostsWithUsers($table1, $table2)
+{
+	global $pdo;
+
+	$sql = "SELECT t1.id, t1.title, t1.img, t1.content, t1.status, t1.id_topic, t1.created_date, t2.username FROM $table1 AS t1 JOIN $table2 AS t2 ON t1.id_user=t2.id";
+
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchAll();
+}

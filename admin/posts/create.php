@@ -47,6 +47,8 @@ include '../../app/controllers/posts.php';
 						<option value="<?= $topic['id'] ?>"><?= $topic['name'] ?></option>
 						<?php endforeach; ?>
 					</select>
+					<input type="checkbox" name="publish" id="publish" value="1">
+					<label for="publish">Опубликовать</label>
 					<button type="submit" name="add-post">Опубликовать</button>
 				</form>
 			</div>

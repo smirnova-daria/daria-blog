@@ -1,3 +1,7 @@
+<?php
+include '../../app/controllers/posts.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -36,13 +40,20 @@
 					<li>Удалить</li>
 				</ul>
 			</div>
+			<?php foreach ($postsAdm as $key => $post): ?>
 			<article class="post">
-				<span class="post__id">1</span>
-				<h2 class="post__title">Название статьи</h2>
-				<p class="post__author">Daria</p>
-				<button class="post__edit-btn">Редактировать</button>
-				<button class="post__delete-btn">Удалить</button>
+				<span class="post__id"><?= $key + 1 ?></span>
+				<h2 class="post__title"><?= $post['title'] ?></h2>
+				<p class="post__author"><?= $post['username'] ?></p>
+				<a href="" class="post__edit-btn">Редактировать</a>
+				<a href="" class="post__delete-btn">Удалить</a>
+				<?php if ($post['status']): ?>
+				<a href="" class="post__hide-btn">В черновик</a>
+				<?php else: ?>
+				<a href="" class="post__hide-btn">Опубликовать</a>
+				<?php endif; ?>
 			</article>
+			<?php endforeach; ?>
 		</section>
 	</main>
 
