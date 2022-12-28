@@ -1,8 +1,6 @@
 <?php
 include '../../app/controllers/topics.php';
-
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -31,23 +29,22 @@ include '../../app/controllers/topics.php';
 				<a href="create.php">Добавить категорию</a>
 				<a href="index.php">Управлять категориями</a>
 			</div>
-			<h1>Управление категориями</h1>
-			<div class="posts__header">
-				<ul>
-					<li>ID</li>
-					<li>Название</li>
-					<li>Редактировать</li>
-					<li>Удалить</li>
-				</ul>
+
+			<h1>Обновление категории</h1>
+
+			<div class="post__create">
+				<form action="edit.php" method="post">
+					<input name="id" value="<?= $id ?>" type="hidden">
+					<p style="color: darkred"><?= $errMsg ?></p>
+					<label for="tag-name">Название категории</label>
+					<input type="text" id="topic-name" name="topic-name" placeholder="Название категории" value="<?= $name ?>">
+					<label for="topic-description">Описание категории</label>
+					<textarea name="topic-description" id="topic-description" cols="100" rows="10"
+						placeholder="Описание категории"><?= $description ?></textarea>
+
+					<button type="submit" name="topic-edit">Обновить</button>
+				</form>
 			</div>
-			<?php foreach ($topics as $key => $topic): ?>
-			<article class="post">
-				<span class="post__id"><?= $key + 1; ?></span>
-				<h2 class="post__title"><?= $topic['name'] ?></h2>
-				<a href="edit.php?id=<?= $topic['id'] ?>" class="post__edit-btn">Редактировать</a>
-				<a href="edit.php?delete_id=<?= $topic['id'] ?>" class="post__delete-btn">Удалить</a>
-			</article>
-			<?php endforeach; ?>
 		</section>
 	</main>
 
