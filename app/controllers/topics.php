@@ -10,8 +10,8 @@ $description = '';
 $errMsg = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['topic-create'])) {
-	$name = $_POST['topic-name'];
-	$description = $_POST['topic-description'];
+	$name = trim($_POST['topic-name']);
+	$description = trim($_POST['topic-description']);
 
 	if ($name === '' || $description === '') {
 		$errMsg = 'Не все поля заполнены!';
@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['topic-edit'])) {
-	$name = $_POST['topic-name'];
-	$description = $_POST['topic-description'];
+	$name = trim($_POST['topic-name']);
+	$description = trim($_POST['topic-description']);
 
 	if ($name === '' || $description === '') {
 		$errMsg = 'Не все поля заполнены!';
@@ -64,11 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['topic-edit'])) {
 		];
 
 		$id = $_POST['id'];
-		$topic_id = update('topics', $id, $topic);
+		update('topics', $id, $topic);
 
 		header("location: " . BASE_URL . "admin/topics/index.php");
-
-
 	}
 }
 

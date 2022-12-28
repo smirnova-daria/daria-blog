@@ -11,7 +11,8 @@
 					<a href="" class="menu-header__link"><?= $_SESSION['login']; ?></a>
 					<ul>
 						<?php if ($_SESSION['admin']): ?>
-						<li><a href="<?php echo BASE_URL . 'registration.php' ?>" class="menu-header__link">Админ панель</a></li>
+						<li><a href="<?php echo BASE_URL . 'admin/posts/index.php' ?>" class="menu-header__link">Админ панель</a>
+						</li>
 						<?php endif; ?>
 						<li><a href="<?= BASE_URL . 'logout.php' ?>" class="menu-header__link">Выйти</a></li>
 					</ul>

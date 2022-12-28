@@ -1,3 +1,6 @@
+<?php
+include '../../app/controllers/posts.php';
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -29,6 +32,7 @@
 
 			<h1>Добавление записи</h1>
 
+			<p style="color: darkred"><?= $errMsg ?></p>
 			<div class="post__create">
 				<form action="create.php" method="post">
 					<label for="post-title">Название статьи</label>
@@ -37,13 +41,13 @@
 					<textarea name="post-text" id="editor" cols="100" rows="10" placeholder="Текст статьи"></textarea>
 					<label for="post-image">Выберите обложку для статьи</label>
 					<input type="file" name="post-image" id="post-image">
-					<select name="post-tags">
-						<option value=""></option>
-						<option value=""></option>
-						<option value=""></option>
+					<select name="post-topics">
+						<option value="">Категория: </option>
+						<?php foreach ($topics as $key => $topic): ?>
+						<option value="<?= $topic['id'] ?>"><?= $topic['name'] ?></option>
+						<?php endforeach; ?>
 					</select>
-
-					<button type="submit">Опубликовать</button>
+					<button type="submit" name="add-post">Опубликовать</button>
 				</form>
 			</div>
 		</section>
