@@ -41,19 +41,21 @@ include '../../app/controllers/posts.php';
 				</ul>
 			</div>
 			<?php foreach ($postsAdm as $key => $post): ?>
-			<article class="post">
-				<span class="post__id"><?= $key + 1 ?></span>
-				<h2 class="post__title"><?= $post['title'] ?></h2>
-				<p class="post__author"><?= $post['username'] ?></p>
-				<a href="" class="post__edit-btn">Редактировать</a>
-				<a href="" class="post__delete-btn">Удалить</a>
-				<?php if ($post['status']): ?>
-				<a href="" class="post__hide-btn">В черновик</a>
-				<?php else: ?>
-				<a href="" class="post__hide-btn">Опубликовать</a>
-				<?php endif; ?>
-			</article>
-			<?php endforeach; ?>
+				<article class="post">
+					<span class="post__id"><?= $key + 1 ?></span>
+					<h2 class="post__title">
+						<?= $post['title'] ?>
+					</h2>
+					<p class="post__author"><?= $post['username'] ?></p>
+					<a href="edit.php?id=<?= $post['id']; ?>" class="post__edit-btn">Редактировать</a>
+					<a href="edit.php?delete_id=<?= $post['id']; ?>" class="post__delete-btn">Удалить</a>
+					<?php if ($post['status']): ?>
+						<a href="edit.php?publish=0&pub_id=<?= $post['id'] ?>" class="post__hide-btn">В черновик</a>
+						<?php else: ?>
+						<a href="edit.php?publish=1&pub_id=<?= $post['id'] ?>" class="post__hide-btn">Опубликовать</a>
+						<?php endif; ?>
+				</article>
+				<?php endforeach; ?>
 		</section>
 	</main>
 
