@@ -35,7 +35,7 @@ include '../../app/controllers/topics.php';
 			<div class="post__create">
 				<form action="edit.php" method="post">
 					<input name="id" value="<?= $id ?>" type="hidden">
-					<p style="color: darkred"><?= $errMsg ?></p>
+					<?php include '../../app/helpers/error-info.php'; ?>
 					<label for="tag-name">Название категории</label>
 					<input type="text" id="topic-name" name="topic-name" placeholder="Название категории" value="<?= $name ?>">
 					<label for="topic-description">Описание категории</label>

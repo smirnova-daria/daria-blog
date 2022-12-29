@@ -14,7 +14,7 @@ $id = '';
 $title = '';
 $text = '';
 $topic = '';
-$errMsg = '';
+$errMsg = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])) {
 	if (!empty($_FILES['post-image']['name'])) {
@@ -24,18 +24,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])) {
 		$destination = ROOT_PATH . "\assets\img\posts\\" . $imgName;
 
 		if (strpos($fileType, 'image') === false) {
-			die("Moжно загружать только изображения!");
+			array_push($errMsg, "Moжно загружать только изображения!");
 		} else {
 			$result = move_uploaded_file($fileTmpName, $destination);
 			if ($result) {
 				$_POST['post-image'] = $imgName;
 			} else {
-				$errMsg = 'Ошибка загрузки изображения на сервер';
+				array_push($errMsg, 'Ошибка загрузки изображения на сервер');
 			}
 		}
 
 	} else {
-		$errMsg = 'Ошибка получения картинки';
+		array_push($errMsg, 'Ошибка получения картинки');
 	}
 
 	$title = trim($_POST['post-title']);
@@ -45,9 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])) {
 
 
 	if ($title === '' || $text === '' || $topic === '') {
-		$errMsg = 'Не все поля заполнены!';
+		array_push($errMsg, 'Не все поля заполнены!');
 	} elseif (mb_strlen($title, 'UTF8') < 7) {
-		$errMsg = 'Название статьи должно состоять как минимум из семи символов';
+		array_push($errMsg, 'Название статьи должно состоять как минимум из семи символов');
 	} else {
 
 		$post = [

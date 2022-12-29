@@ -31,21 +31,22 @@ include '../../app/controllers/posts.php';
 			</div>
 
 			<h1>Добавление записи</h1>
-
-			<p style="color: darkred"><?= $errMsg ?></p>
+			<?php include '../../app/helpers/error-info.php'; ?>
 			<div class="post__create">
 				<form action="create.php" method="post" enctype="multipart/form-data">
 					<label for="post-title">Название статьи</label>
-					<input type="text" id="post-title" name="post-title" placeholder="Название статьи">
+					<input type="text" id="post-title" name="post-title" placeholder="Название статьи" value="<?= $title ?>">
 					<label for="editor">Содержимое статьи</label>
-					<textarea name="post-text" id="editor" cols="100" rows="10" placeholder="Текст статьи"></textarea>
+					<textarea name="post-text" id="editor" cols="100" rows="10" placeholder="Текст статьи"><?= $text ?></textarea>
 					<label for="post-image">Выберите обложку для статьи</label>
 					<input type="file" name="post-image" id="post-image">
 					<select name="post-topics">
 						<option value="">Категория: </option>
 						<?php foreach ($topics as $key => $topic): ?>
-						<option value="<?= $topic['id'] ?>"><?= $topic['name'] ?></option>
-						<?php endforeach; ?>
+							<option value="<?= $topic['id'] ?>">
+								<?= $topic['name'] ?>
+							</option>
+							<?php endforeach; ?>
 					</select>
 					<input type="checkbox" name="publish" id="publish" value="1">
 					<label for="publish">Опубликовать</label>

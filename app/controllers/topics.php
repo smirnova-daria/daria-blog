@@ -7,21 +7,21 @@ $topics = selectAll('topics');
 $id = '';
 $name = '';
 $description = '';
-$errMsg = '';
+$errMsg = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['topic-create'])) {
 	$name = trim($_POST['topic-name']);
 	$description = trim($_POST['topic-description']);
 
 	if ($name === '' || $description === '') {
-		$errMsg = 'Не все поля заполнены!';
+		array_push($errMsg, 'Не все поля заполнены!');
 	} elseif (mb_strlen($name, 'UTF8') < 2) {
-		$errMsg = 'Название категории должно состоять как минимум из двух символов';
+		array_push($errMsg, 'Название категории должно состоять как минимум из двух символов');
 	} else {
 		$existence = selectOne('topics', ['name' => $name]);
 
 		if ($existence && $existence['name'] === $name) {
-			$errMsg = 'Такая категория уже есть в базе';
+			array_push($errMsg, 'Такая категория уже есть в базе');
 		} else {
 			$topic = [
 				'name' => $name,
@@ -53,9 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['topic-edit'])) {
 	$description = trim($_POST['topic-description']);
 
 	if ($name === '' || $description === '') {
-		$errMsg = 'Не все поля заполнены!';
+		array_push($errMsg, 'Не все поля заполнены!');
 	} elseif (mb_strlen($name, 'UTF8') < 2) {
-		$errMsg = 'Название категории должно состоять как минимум из двух символов';
+		array_push($errMsg, 'Название категории должно состоять как минимум из двух символов');
 	} else {
 
 		$topic = [
