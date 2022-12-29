@@ -34,7 +34,7 @@ include '../../app/controllers/posts.php';
 
 			<p style="color: darkred"><?= $errMsg ?></p>
 			<div class="post__create">
-				<form action="create.php" method="post">
+				<form action="create.php" method="post" enctype="multipart/form-data">
 					<label for="post-title">Название статьи</label>
 					<input type="text" id="post-title" name="post-title" placeholder="Название статьи">
 					<label for="editor">Содержимое статьи</label>

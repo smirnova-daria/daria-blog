@@ -2,6 +2,10 @@
 include '../../path.php';
 include '../../app/database/db.php';
 
+if (!$_SESSION) {
+	header('location: ' . BASE_URL . 'auth.php');
+}
+
 $topics = selectAll('topics');
 $posts = selectAll('posts');
 $postsAdm = selectAllFromPostsWithUsers('posts', 'users');
@@ -13,6 +17,27 @@ $topic = '';
 $errMsg = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-post'])) {
+	if (!empty($_FILES['post-image']['name'])) {
+		$imgName = time() . "_" . $_FILES['post-image']['name'];
+		$fileTmpName = $_FILES['post-image']['tmp_name'];
+		$fileType = $_FILES['post-image']['type'];
+		$destination = ROOT_PATH . "\assets\img\posts\\" . $imgName;
+
+		if (strpos($fileType, 'image') === false) {
+			die("Moжно загружать только изображения!");
+		} else {
+			$result = move_uploaded_file($fileTmpName, $destination);
+			if ($result) {
+				$_POST['post-image'] = $imgName;
+			} else {
+				$errMsg = 'Ошибка загрузки изображения на сервер';
+			}
+		}
+
+	} else {
+		$errMsg = 'Ошибка получения картинки';
+	}
+
 	$title = trim($_POST['post-title']);
 	$text = trim($_POST['post-text']);
 	$topic = $_POST['post-topics'];
