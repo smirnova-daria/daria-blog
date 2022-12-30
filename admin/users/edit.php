@@ -33,30 +33,31 @@ include '../../app/controllers/users.php';
 				<a href="index.php">Управлять пользователями</a>
 			</div>
 
-			<h1>Добавление пользователя</h1>
+			<h1>Редактировать пользователя</h1>
 
 			<iv class="post__create">
-				<form action="create.php" method="post">
+				<form action="edit.php" method="post">
 					<?php include '../../app/helpers/error-info.php'; ?>
+					<input name="id" value="<?= $id ?>" type="hidden">
 					<div class="form-control">
 						<label for="login">Логин</label>
 						<input type="text" name="login" id="login" placeholder="введите логин" value="<?= $login ?>">
 					</div>
 					<div class="form-control">
 						<label for="email">Email</label>
-						<input type="email" name="email" id="email" placeholder="введите email" value="<?= $email ?>">
+						<input type="email" name="email" id="email" placeholder="введите email" value="<?= $email ?>" readonly>
 					</div>
 					<div class="form-control">
-						<label for="password">Пароль</label>
+						<label for="password">Сбросить пароль</label>
 						<input type="password" name="password" id="password" placeholder="введите пароль">
 					</div>
 					<div class="form-control">
 						<label for="password-repeat">Повторите пароль</label>
 						<input type="password" name="password-repeat" id="password-repeat" placeholder="повторите пароль">
 					</div>
-					<input type="checkbox" name="admin-role" id="admin-role" value="1">
+					<input type="checkbox" name="admin-role" id="admin-role" value="1" <?php if ($admin === 1): ?> checked <?php endif; ?>>
 					<label for="admin-role">админ</label>
-					<button type="submit" name="create-user">Создать</button>
+					<button type="submit" name="edit-user">Обновить</button>
 				</form>
 				</div>
 		</section>

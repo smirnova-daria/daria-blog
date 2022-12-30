@@ -19,7 +19,7 @@ include 'app/controllers/users.php';
 		<section class="registration">
 			<h1 class="registration__title">Войти в личный кабинет</h1>
 			<form action="auth.php" method="post" class="registration__form">
-				<p style="color: darkred;"><?= $errMsg ?></p>
+				<?php include 'app/helpers/error-info.php'; ?>
 				<div class="form-control">
 					<label for="email">Email (при регистрации)</label>
 					<input type="email" name="email" id="email" placeholder="введите email" value="<?= $email ?>">
