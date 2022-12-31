@@ -1,4 +1,9 @@
-<?php include('path.php'); ?>
+<?php
+include('path.php');
+include 'app/database/db.php';
+$post = selectOne('posts', ['id' => $_GET['post']]);
+prePrint($post);
+?>
 
 <!DOCTYPE html>
 <html lang="ru">

@@ -1,6 +1,7 @@
 <?php
 include 'path.php';
 include 'app/database/db.php';
+$posts = selectAll('posts', ['status' => 1]);
 ?>
 
 <!DOCTYPE html>
@@ -61,48 +62,27 @@ include 'app/database/db.php';
 			<div class="container-md">
 				<h2 class="section-title">Топ публикаций</h2>
 				<div class="top__articles">
-					<article class="top__article article-top">
-						<img src="assets/img/articles/article1.jpg" alt="article poster" class="article-top__img">
-						<h3 class="article-top__title">С чего всё начиналось</h3>
-						<div class="article-top__tags">
-							<span class="article-tag tag-green">#javascript</span>
-							<span class="article-tag tag-blue">#php</span>
-							<span class="article-tag tag-red">#blog</span>
-						</div>
-						<p class="article-top__description">
-							Это самая первая статья о том, как всё начиналось. Зачем мне нужен блог? Какой стек используется? Какие
-							этапы разработки? И многое другое...
-						</p>
-						<time class="article-top__date" datetime="2022-12-21">21 декабря 2022</time>
-					</article>
-					<article class="top__article article-top">
-						<img src="assets/img/articles/article1.jpg" alt="article poster" class="article-top__img">
-						<h3 class="article-top__title">С чего всё начиналось</h3>
-						<div class="article-top__tags tags">
-							<span class="article-tag tag-green">#javascript</span>
-							<span class="article-tag tag-blue">#php</span>
-							<span class="article-tag tag-red">#blog</span>
-						</div>
-						<p class="article-top__description">
-							Это самая первая статья о том, как всё начиналось. Зачем мне нужен блог? Какой стек используется? Какие
-							этапы разработки? И многое другое...
-						</p>
-						<time class="article-top__date" datetime="2022-12-21">21 декабря 2022</time>
-					</article>
-					<article class="top__article article-top">
-						<img src="assets/img/articles/article1.jpg" alt="article poster" class="article-top__img">
-						<h3 class="article-top__title">С чего всё начиналось</h3>
-						<div class="article-top__tags">
-							<span class="article-tag tag-green">#javascript</span>
-							<span class="article-tag tag-blue">#php</span>
-							<span class="article-tag tag-red">#blog</span>
-						</div>
-						<p class="article-top__description">
-							Это самая первая статья о том, как всё начиналось. Зачем мне нужен блог? Какой стек используется? Какие
-							этапы разработки? И многое другое...
-						</p>
-						<time class="article-top__date" datetime="2022-12-21">21 декабря 2022</time>
-					</article>
+					<?php foreach ($posts as $post): ?>
+						<article class="top__article article-top">
+							<img src=" <?= BASE_URL . "assets/img/posts/" . $post['img'] ?>" alt="article poster"
+								class="article-top__img">
+							<a href="<?= BASE_URL . 'article.php?post=' . $post['id'] ?>">
+								<h3 class="article-top__title">
+									<?= substr($post['title'], 0, 120) ?>
+								</h3>
+							</a>
+							<div class="article-top__tags">
+								<span class="article-tag tag-green">#javascript</span>
+								<span class="article-tag tag-blue">#php</span>
+								<span class="article-tag tag-red">#blog</span>
+							</div>
+							<p class="article-top__description">
+								<?= substr($post['content'], 0, 150) ?>
+							</p>
+							<time class="article-top__date" datetime="2022-12-21"><?= $post['created_date'] ?></time>
+						</article>
+						<?php endforeach; ?>
+
 				</div>
 			</div>
 		</section>
