@@ -2,6 +2,7 @@
 include 'path.php';
 include 'app/database/db.php';
 $posts = selectAll('posts', ['status' => 1]);
+$topPosts = selectTopTopics('posts');
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +62,25 @@ $posts = selectAll('posts', ['status' => 1]);
 		<section class="top">
 			<div class="container-md">
 				<h2 class="section-title">Топ публикаций</h2>
+				<div class="top__articles">
+					<?php foreach ($topPosts as $post): ?>
+						<article class="top__article article-top">
+							<img src=" <?= BASE_URL . "assets/img/posts/" . $post['img'] ?>" alt="article poster"
+								class="article-top__img">
+							<a href="<?= BASE_URL . 'article.php?post=' . $post['id'] ?>">
+								<h3 class="article-top__title">
+									<?= substr($post['title'], 0, 120) ?>
+								</h3>
+							</a>
+						</article>
+						<?php endforeach; ?>
+
+				</div>
+			</div>
+		</section>
+		<section class="articles">
+			<div class="container-md">
+				<h2 class="section-title">Все публикации</h2>
 				<div class="top__articles">
 					<?php foreach ($posts as $post): ?>
 						<article class="top__article article-top">
