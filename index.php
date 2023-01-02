@@ -1,8 +1,14 @@
 <?php
 include 'path.php';
 include 'app/database/db.php';
-$posts = selectAll('posts', ['status' => 1]);
 $topPosts = selectTopTopics('posts');
+
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 1;
+$offset = $limit * ($page - 1);
+$totalPages = round(countRow('posts') / $limit, 0);
+
+$posts = selectAllWithLimit('posts', $limit, $offset, ['status' => 1]);
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +108,7 @@ $topPosts = selectTopTopics('posts');
 							<time class="article-top__date" datetime="2022-12-21"><?= $post['created_date'] ?></time>
 						</article>
 						<?php endforeach; ?>
-
+					<?php include("app/include/pagination.php"); ?>
 				</div>
 			</div>
 		</section>

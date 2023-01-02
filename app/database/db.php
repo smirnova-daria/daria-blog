@@ -175,3 +175,44 @@ function searchInTitleAndContent($term, $table1, $table2)
 	dbCheckError($query);
 	return $query->fetchAll();
 }
+
+function countRow($table)
+{
+	global $pdo;
+
+	$sql = "SELECT COUNT(*) FROM $table WHERE status=1";
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchColumn();
+}
+
+
+function selectAllWithLimit($table, $limit, $offset, $params = [])
+{
+	global $pdo;
+	$sql = "SELECT * FROM $table";
+
+	if (!empty($params)) {
+		$i = 0;
+		foreach ($params as $key => $value) {
+			if (!is_numeric($value)) {
+				$value = "'" . $value . "'";
+			}
+			if ($i === 0) {
+				$sql .= " WHERE $key=$value";
+			} else {
+				$sql .= " AND $key=$value";
+			}
+
+			$i++;
+		}
+	}
+	$sql .= " LIMIT $limit OFFSET $offset";
+
+	$query = $pdo->prepare($sql);
+	$query->execute();
+
+	dbCheckError($query);
+	return $query->fetchAll();
+}
