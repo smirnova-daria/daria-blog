@@ -160,3 +160,18 @@ function selectTopTopics($table)
 	dbCheckError($query);
 	return $query->fetchAll();
 }
+
+
+function searchInTitleAndContent($term, $table1, $table2)
+{
+	global $pdo;
+
+	$term = trim(strip_tags(stripcslashes(htmlspecialchars($term))));
+
+	$sql = "SELECT p.*, u.username FROM $table1 AS p JOIN $table2 AS u ON p.id_user=u.id WHERE p.status=1 AND p.title LIKE '%$term%' OR p.content LIKE '%$term%'";
+
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchAll();
+}
