@@ -47,6 +47,7 @@ $post = selectOne('posts', ['id' => $_GET['post']]);
 				</article>
 			</div>
 		</section>
+		<?php include("app/include/comments.php"); ?>
 	</main>
 	<?php include("app/include/footer.php"); ?>
 </body>
