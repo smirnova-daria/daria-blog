@@ -2,7 +2,7 @@
 include 'app/controllers/comments.php';
 ?>
 
-<section class="comments-section">
+<section class="comments-form">
 	<h3>Оставить комментарий</h3>
 	<form action="<?= BASE_URL . 'article.php?post=' . $page ?>" method="post">
 		<div style="color: darkred;">
@@ -16,6 +16,21 @@ include 'app/controllers/comments.php';
 		<button type="submit" name="send-comment">Отправить</button>
 	</form>
 
-	<h3>Комментарии</h3>
-	вывод комментариев
 </section>
+<?php if (count($comments) > 0): ?>
+	<section class="comments-section">
+		<h3>Комментарии</h3>
+		<?php foreach ($comments as $comment): ?>
+			<article class="comment" style="border: 1px dashed tomato; margin-bottom: 20px;">
+				<strong>
+					<?= $comment['email'] ?>
+				</strong>
+				<hr>
+				<span><?= $comment['created_date'] ?></span>
+				<p>
+					<?= $comment['comment'] ?>
+				</p>
+			</article>
+			<?php endforeach ?>
+	</section>
+<?php endif; ?>
