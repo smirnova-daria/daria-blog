@@ -5,7 +5,7 @@ include '../../app/controllers/posts.php';
 <?php include '../../app/include/head.php'; ?>
 
 <body>
-	<?php include("../../app/include/header-admin.php"); ?>
+	<?php include("../../app/include/header.php"); ?>
 
 
 	<main class="main">
