@@ -1,16 +1,12 @@
 <?php
-include 'path.php';
-include 'app/database/db.php';
-$posts = [];
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search-term'])) {
-	$posts = searchInTitleAndContent($_POST['search-term'], 'posts', 'users');
-}
+include_once 'path.php';
+include 'app/controllers/search.php';
 ?>
 
 <?php include 'app/include/head.php'; ?>
 
 <body>
-	<?php include("app/include/header.php"); ?>
+	<?php include 'app/include/header.php'; ?>
 	<main class="main">
 		<section class="articles">
 			<div class="container-md">
@@ -35,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search-term'])) {
 							</p>
 							<time class="article-top__date" datetime="2022-12-21"><?= $post['created_date'] ?></time>
 						</article>
-						<?php endforeach; ?>
+					<?php endforeach; ?>
 
 				</div>
 			</div>
 		</section>
 	</main>
-	<?php include("app/include/footer.php"); ?>
+	<?php include 'app/include/footer.php'; ?>
 </body>
 
 </html>

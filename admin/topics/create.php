@@ -5,7 +5,7 @@ include '../../app/controllers/topics.php';
 <?php include '../../app/include/head.php'; ?>
 
 <body>
-	<?php include("../../app/include/header.php"); ?>
+	<?php include '../../app/include/header.php'; ?>
 
 
 	<main class="main">
@@ -35,7 +35,7 @@ include '../../app/controllers/topics.php';
 	</main>
 
 
-	<?php include("../../app/include/footer.php"); ?>
+	<?php include '../../app/include/footer.php'; ?>
 </body>
 
 </html>

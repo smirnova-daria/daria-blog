@@ -1,12 +1,12 @@
 <?php
-include 'path.php';
+include_once 'path.php';
 include 'app/controllers/users.php';
 ?>
 
 <?php include 'app/include/head.php'; ?>
 
 <body>
-	<?php include("app/include/header.php"); ?>
+	<?php include 'app/include/header.php'; ?>
 	<main class="main">
 		<section class="registration">
 			<h1 class="registration__title">Войти в личный кабинет</h1>
@@ -27,7 +27,7 @@ include 'app/controllers/users.php';
 			</form>
 		</section>
 	</main>
-	<?php include("app/include/footer.php"); ?>
+	<?php include 'app/include/footer.php'; ?>
 </body>
 
 </html>

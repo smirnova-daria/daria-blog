@@ -1,5 +1,5 @@
 <?php
-include 'path.php';
+include_once 'path.php';
 include 'app/database/db.php';
 $topPosts = selectTopTopics('posts');
 
@@ -14,7 +14,7 @@ $posts = selectAllWithLimit('posts', $limit, $offset, ['status' => 1]);
 <?php include 'app/include/head.php'; ?>
 
 <body>
-	<?php include("app/include/header.php"); ?>
+	<?php include 'app/include/header.php'; ?>
 	<main class="main">
 		<section class="about">
 			<div class="container-sm">
@@ -94,12 +94,12 @@ $posts = selectAllWithLimit('posts', $limit, $offset, ['status' => 1]);
 							<time class="article-top__date" datetime="2022-12-21"><?= $post['created_date'] ?></time>
 						</article>
 					<?php endforeach; ?>
-					<?php include("app/include/pagination.php"); ?>
+					<?php include 'app/include/pagination.php'; ?>
 				</div>
 			</div>
 		</section>
 	</main>
-	<?php include("app/include/footer.php"); ?>
+	<?php include 'app/include/footer.php'; ?>
 </body>
 
 </html>

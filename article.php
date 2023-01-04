@@ -1,5 +1,5 @@
 <?php
-include('path.php');
+include_once 'path.php';
 include 'app/database/db.php';
 $post = selectOne('posts', ['id' => $_GET['post']]);
 ?>
@@ -7,7 +7,7 @@ $post = selectOne('posts', ['id' => $_GET['post']]);
 <?php include 'app/include/head.php'; ?>
 
 <body>
-	<?php include("app/include/header.php"); ?>
+	<?php include 'app/include/header.php'; ?>
 	<main class="main">
 		<section class="article-section">
 			<div class="container-md">
@@ -39,9 +39,9 @@ $post = selectOne('posts', ['id' => $_GET['post']]);
 				</article>
 			</div>
 		</section>
-		<?php include("app/include/comments.php"); ?>
+		<?php include 'app/include/comments.php'; ?>
 	</main>
-	<?php include("app/include/footer.php"); ?>
+	<?php include 'app/include/footer.php'; ?>
 </body>
 
 </html>
