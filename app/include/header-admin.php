@@ -1,6 +1,5 @@
 <?php
 session_start();
-// include '../../path.php';
 ?>
 
 <header class="header">

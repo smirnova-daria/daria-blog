@@ -3,21 +3,7 @@ include '../../app/database/db.php';
 include '../../app/controllers/comments.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"> -->
-
-
-	<title>Личный Блог &mdash; Смирнова Дарья</title>
-</head>
+<?php include '../../app/include/head.php'; ?>
 
 <body>
 	<?php include("../../app/include/header-admin.php"); ?>
@@ -48,11 +34,11 @@ include '../../app/controllers/comments.php';
 					<a href="edit.php?delete_id=<?= $comment['id']; ?>" class="post__delete-btn">Удалить</a>
 					<?php if ($comment['status']): ?>
 						<a href="edit.php?publish=0&pub_id=<?= $comment['id'] ?>" class="post__hide-btn">В черновик</a>
-						<?php else: ?>
+					<?php else: ?>
 						<a href="edit.php?publish=1&pub_id=<?= $comment['id'] ?>" class="post__hide-btn">Опубликовать</a>
-						<?php endif; ?>
+					<?php endif; ?>
 				</article>
-				<?php endforeach; ?>
+			<?php endforeach; ?>
 		</section>
 	</main>
 

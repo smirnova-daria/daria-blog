@@ -1,5 +1,5 @@
 <?php
-include '../../path.php';
+include_once '../../path.php';
 
 $commentsForAdm = selectAll('comments');
 $id = '';

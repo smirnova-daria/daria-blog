@@ -1,21 +1,8 @@
 <?php
 include '../../app/controllers/posts.php';
 ?>
-<!DOCTYPE html>
-<html lang="ru">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"> -->
-
-
-	<title>Личный Блог &mdash; Смирнова Дарья</title>
-</head>
+<?php include '../../app/include/head.php'; ?>
 
 <body>
 	<?php include("../../app/include/header-admin.php"); ?>
@@ -41,15 +28,15 @@ include '../../app/controllers/posts.php';
 							<option value="<?= $top['id'] ?>" <?php if ($top['id'] === $topic): ?> selected <?php endif; ?>>
 								<?= $top['name'] ?>
 							</option>
-							<?php endforeach; ?>
+						<?php endforeach; ?>
 					</select>
 					<?php if (empty($publish) || $publish === 0): ?>
 						<input type="checkbox" name="publish" id="publish">
 						<label for="publish">Опубликовать</label>
-						<?php else: ?>
+					<?php else: ?>
 						<input type="checkbox" name="publish" id="publish" value="1" checked>
 						<label for="publish">Опубликовать</label>
-						<?php endif; ?>
+					<?php endif; ?>
 					<button type="submit" name="edit-post">Сохранить</button>
 				</form>
 			</div>

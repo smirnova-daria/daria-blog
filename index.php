@@ -11,21 +11,7 @@ $totalPages = round(countRow('posts') / $limit, 0);
 $posts = selectAllWithLimit('posts', $limit, $offset, ['status' => 1]);
 ?>
 
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"> -->
-
-
-	<title>Личный Блог &mdash; Смирнова Дарья</title>
-</head>
+<?php include 'app/include/head.php'; ?>
 
 <body>
 	<?php include("app/include/header.php"); ?>
@@ -79,7 +65,7 @@ $posts = selectAllWithLimit('posts', $limit, $offset, ['status' => 1]);
 								</h3>
 							</a>
 						</article>
-						<?php endforeach; ?>
+					<?php endforeach; ?>
 
 				</div>
 			</div>
@@ -107,7 +93,7 @@ $posts = selectAllWithLimit('posts', $limit, $offset, ['status' => 1]);
 							</p>
 							<time class="article-top__date" datetime="2022-12-21"><?= $post['created_date'] ?></time>
 						</article>
-						<?php endforeach; ?>
+					<?php endforeach; ?>
 					<?php include("app/include/pagination.php"); ?>
 				</div>
 			</div>
