@@ -20,6 +20,9 @@ body {
 	background: linear-gradient(146.65deg, #020213 0.93%, #091c38 97.36%);
 	min-height: 100vh;
 	color: #ffffff;
+
+	display: flex;
+	flex-direction: column;
 }
 
 a {
@@ -174,6 +177,10 @@ a {
 /********** /SEARCH ***********/
 
 /********** MAIN PAGE ***********/
+
+.main {
+	flex: 1;
+}
 .about {
 }
 .section-title {

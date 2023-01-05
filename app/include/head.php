@@ -13,5 +13,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="<?= BASE_URL . 'assets/css/style.css' ?>">
+
+	<?php if (strpos($_SERVER['REQUEST_URI'], 'admin')): ?>
+		<link rel="stylesheet" href="<?= BASE_URL . 'assets/css/admin.css' ?>">
+	<?php endif ?>
 	<title>Личный Блог &mdash; Смирнова Дарья</title>
 </head>

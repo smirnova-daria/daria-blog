@@ -1,0 +1,91 @@
+.admin__wrapper {
+	display: grid;
+	grid-template-columns: 20rem 1fr;
+	gap: 2rem;
+}
+
+.admin__sidebar {
+	background-color: #091c38;
+}
+.admin__sidebar ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	font-size: 1.8rem;
+	text-transform: uppercase;
+}
+
+.admin__sidebar ul li a {
+	display: block;
+	padding: 2rem;
+	transition: 0.3s;
+}
+.admin__sidebar ul li a:hover,
+.admin__sidebar ul li a.active-link {
+	background-color: #12366b;
+}
+.admin__posts {
+	text-align: center;
+	padding-bottom: 5rem;
+}
+.admin__add-post-btn {
+	display: inline-block;
+	font-size: 1.8rem;
+	background-color: #024e35;
+	padding: 0.5rem 1.5rem;
+	transition: 0.3s;
+	text-transform: uppercase;
+}
+.admin__add-post-btn:hover {
+	background-color: #016e4a;
+}
+
+.admin__table {
+	font-size: 1.8rem;
+	margin-bottom: 5rem;
+}
+
+.admin__main-title {
+	text-transform: uppercase;
+	font-size: 2.8rem;
+	text-align: center;
+	margin-bottom: 5rem;
+}
+.grid-5-cols {
+	display: grid;
+	grid-template-columns: 5rem 3fr 1fr 2fr;
+	gap: 2rem;
+	align-items: center;
+	justify-items: center;
+}
+.admin__table-head {
+	font-weight: 700;
+	font-size: 2.4rem;
+	text-align: center;
+	background-color: #091c38;
+	padding: 1rem 0;
+}
+.admin__post-controlls {
+	display: flex;
+	flex-direction: column;
+	font-size: 1.6rem;
+	gap: 1rem;
+}
+.admin__table-row {
+	padding: 1rem 0;
+}
+.admin__table-row:nth-child(odd) {
+	background-color: #12366b;
+}
+.admin__table-row:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
+@media (max-width: 800px) {
+	.admin__wrapper {
+		grid-template-columns: 1fr;
+	}
+	.admin__sidebar ul {
+		flex-direction: row;
+	}
+}
