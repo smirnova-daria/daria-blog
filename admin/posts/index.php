@@ -46,8 +46,9 @@ include '../../app/controllers/posts.php';
 							</article>
 						<?php endforeach; ?>
 					</div>
-
-					<a href="create.php" class="admin__add-post-btn">Добавить пост</a>
+                    <div class="btn-wrapper">
+                        <a href="create.php" class="admin__add-post-btn">Добавить пост</a>
+                    </div>
 
 				</section>
 			</div>

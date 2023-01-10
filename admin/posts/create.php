@@ -8,24 +8,30 @@ include '../../app/controllers/posts.php';
 
 
 	<main class="main">
+        <div class="container-md">
+            <div class="admin__wrapper">
 		<?php include '../../app/include/sidebar-admin.php'; ?>
 
-		<section class="posts">
-			<div class="posts__controlls">
-				<a href="create.php">Добавить пост</a>
-				<a href="index.php">Управлять постами</a>
-			</div>
-
-			<h1>Добавление записи</h1>
+		<section class="admin__posts">
+			<h2 class="admin__main-title">Добавление записи</h2>
 			<?php include '../../app/helpers/error-info.php'; ?>
-			<div class="post__create">
-				<form action="create.php" method="post" enctype="multipart/form-data">
-					<label for="post-title">Название статьи</label>
-					<input type="text" id="post-title" name="post-title" placeholder="Название статьи" value="<?= $title ?>">
-					<label for="editor">Содержимое статьи</label>
-					<textarea name="post-text" id="editor" cols="100" rows="10" placeholder="Текст статьи"><?= $text ?></textarea>
-					<label for="post-image">Выберите обложку для статьи</label>
-					<input type="file" name="post-image" id="post-image">
+
+				<form action="create.php" method="post" enctype="multipart/form-data" class="admin__form">
+                    <div class="admin__form-control admin__form-control--line">
+                        <label for="post-title">Название статьи</label>
+                        <input type="text" id="post-title" name="post-title" placeholder="Название статьи"
+                               value="<?= $title ?>">
+                    </div>
+                    <div class="admin__form-control">
+                        <label for="editor">Содержимое статьи</label>
+                        <textarea name="post-text" id="editor" cols="100" rows="10" placeholder="Текст статьи"
+                                  class="editor"><?= $text ?></textarea>
+                    </div>
+                    <div class="admin__form-control admin__form-control--line">
+                        <label for="post-image">Выберите обложку для статьи</label>
+                        <input type="file" name="post-image" id="post-image">
+                    </div>
+                    <div class="admin__form-control admin__form-control--line">
 					<select name="post-topics">
 						<option value="">Категория: </option>
 						<?php foreach ($topics as $key => $topic): ?>
@@ -36,10 +42,13 @@ include '../../app/controllers/posts.php';
 					</select>
 					<input type="checkbox" name="publish" id="publish" value="1">
 					<label for="publish">Опубликовать</label>
-					<button type="submit" name="add-post">Опубликовать</button>
+                    </div>
+					<button type="submit" name="add-post" class="admin__form-save-btn">Опубликовать</button>
 				</form>
-			</div>
+
 		</section>
+            </div>
+        </div>
 	</main>
 
 
